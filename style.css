@@ -1,0 +1,13 @@
+
+
+
+
+
+.mostra_diamante{
+    margin: 25px 45px;
+    padding: 10px;
+    display: none;
+    border: 1px dotted black;
+    background-color: beige;
+    text-align: center;
+}
