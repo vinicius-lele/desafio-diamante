@@ -1,6 +1,5 @@
 let opcao = document.getElementById('select_diamante');
 let div = document.getElementById("mostra_diamante");
-let letra = ['A','B','C','D','E','F','G','H','&nbspI','J','L','M','N','O','P','Q','R','S','T','U','V','X','Z'];
 let emBranco = '&nbsp&nbsp&nbsp';
 let diamante = [];
 let meioDiamante;
@@ -16,8 +15,8 @@ function mostrarDiamanteCima(valor){
             
             if(meioDiamante-1 == j)
             { 
-                diamante[j-i] = letra[i];
-                diamante[j+i] = letra[i];
+                diamante[j-i] = String.fromCharCode(i+65);
+                diamante[j+i] = String.fromCharCode(i+65);
             }           
         }
         texto+=diamante.join('')+'<br>';
@@ -32,8 +31,8 @@ function mostrarDiamanteCima(valor){
             {
                 if(meioDiamante-1 == j)
             { 
-                diamante[(j-i)+1] = letra[i-1];
-                diamante[(j+i)-1] = letra[i-1];
+                diamante[(j-i)+1] = String.fromCharCode(i+64);
+                diamante[(j+i)-1] = String.fromCharCode(i+64);
             }
             }
             texto+=diamante.join('')+'<br>';
@@ -44,10 +43,10 @@ function mostrarDiamanteCima(valor){
 }
 
 function geraSelect(){
-    for(let i = 1;i<=23;i++){
+    for(let i = 1;i<=26;i++){
         let opc = document.createElement('option');
         opc.value = i;
-        opc.innerHTML = letra[i-1];
+        opc.innerHTML = String.fromCharCode(i+64);
         opcao.appendChild(opc)
     }
 }
