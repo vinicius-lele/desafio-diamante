@@ -1,5 +1,5 @@
 let opcao_select_diamante = document.getElementById('select-diamante');
-let divMostraDiamante = document.getElementById("mostra-diamante");
+let divMostraDiamante = document.getElementById('mostra-diamante');
 let emBranco = '&nbsp'.repeat(3);
 let diamante = [];
 let meioDiamante;
