@@ -1,4 +1,4 @@
-let opcao_select_diamante = document.getElementById('select-diamante');
+let opcaoSelectDiamante = document.getElementById('select-diamante');
 let divMostraDiamante = document.getElementById('mostra-diamante');
 let emBranco = '&nbsp'.repeat(3);
 let diamante = [];
@@ -20,40 +20,48 @@ function mostrarDiamante(valor){
                 diamante[j+i] = charCode
             }           
         }
-        texto+=diamante.join('')+'<br>';
-        diamante.fill(emBranco);      
+        preencheDiamante()    
     }
     
-    for(i= opcao_select_diamante.value -1;i>=1;i--)
+    for(i= opcaoSelectDiamante.value -1;i>=1;i--)
     { 
         for(j=0;j<=valor;j++)
             {
                 if(meioDiamante-1 == j)
                 { 
-                    let charCode = String.fromCharCode(i+64);
-                    diamante[(j-i)+1] = charCode;
-                    diamante[(j+i)-1] = charCode;
+                    diamante[(j-i)+1] = geraCharCode(i);
+                    diamante[(j+i)-1] = geraCharCode(i);
                 }
             }
-        texto+=diamante.join('')+'<br>';
-        diamante.fill(emBranco);
+            preencheDiamante()  
     }
     return divMostraDiamante.innerHTML=texto;  
 }
 
+function geraCharCode(indice){
+    let charCode = String.fromCharCode(64+indice);
+    return charCode;
+}
+
+function preencheDiamante(){
+    texto+=diamante.join('')+'<br>';
+    diamante.fill(emBranco); 
+}
+
 function geraSelect(){
-    for(let i = 1;i<=26;i++){
+    let totalLetrasNoAlfabeto = 26;
+    for(let i = 1;i<=totalLetrasNoAlfabeto;i++){
         let option = document.createElement('option');
         option.value = i;
-        option.innerHTML = String.fromCharCode(i+64);
-        opcao_select_diamante.appendChild(option);
+        option.innerHTML = geraCharCode(i);
+        opcaoSelectDiamante.appendChild(option);
     }
 }
 
-opcao_select_diamante.addEventListener('change', () => {
+opcaoSelectDiamante.addEventListener('change', () => {
     texto = '';
     divMostraDiamante.style.display = 'block';
-    diamante.length = (opcao_select_diamante.value*2)-1;
+    diamante.length = (opcaoSelectDiamante.value*2)-1;
     diamante.fill(emBranco);
     meioDiamante=Math.ceil(diamante.length/2);
     mostrarDiamante(diamante.length);
